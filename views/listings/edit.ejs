@@ -1,0 +1,74 @@
+<% layout ( "/layouts/boilerplate")-%> 
+<!-- <body> -->
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+    <h3>Edit your Listing</h3>
+        <form method="POST" action="http://localhost:8080/listings/<%=listing._id%>?_method=PUT"  class="needs-validation"  novalidate  enctype="multipart/form-data"> 
+            <div class="mb-3">
+                <label for="Title" class="form-label">Title</label>
+                <input name="listing[title]" value="<%=listing.title%>" type="text" class="form-control"required >  
+                <div class="valid-feedback"> Title Looks good!</div>
+                <div class="invalid-feedback">Please choose a Title.</div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">description</label>
+                <textarea name="listing[description]" type="text" value=" " class="form-control" id="" required><%=listing.description%></textarea>  
+                <div class="valid-feedback">description Looks good!</div>
+                <div class="invalid-feedback">Please choose a description.</div>
+            </div>
+            <!-- <div class="mb-3">
+                <label for="image" class="form-label">image link </label>
+                <input name="listing[image]" type="text" class="form-control"  required value="<%=listing.image%>" >  
+                <div class="valid-feedback"> image Looks good!</div>
+                <div class="invalid-feedback">Please choose a image.</div>
+            </div> -->
+
+
+<!-- to add previw image at edit  form  -->
+            <div class="mb-3">
+                original listing image <br>
+                <!-- <img src="<%= listing.image.url%>" alt=""> -->
+
+                <!-- https://cloudinary.com/documentation/image_transformations#transformation_url_structure   is swebsite pe pata lg jayega ki kaise image ki qulity ko decrease krta hai jo ki cloundinry provide krwa raha  -->
+                <img src="<%=originalImageUrl%>" > 
+            </div>
+
+
+
+            <div class="mb-3">
+                <label for="image" class="form-label">upload new image </label>
+                <input name="listing[image]" type="file" class="form-control"  >  <!-- mam ne iss file me se "required",value="<%=listing.image.filename%> ( required value="<%=listing.image.filename%>")hataya hai and  -->
+                <div class="valid-feedback"> image Looks good!</div>
+                <div class="invalid-feedback">Please choose a image.</div>
+            </div>
+
+          <div class="row">  
+            <div class="mb-3 col-md-4 ">
+                <label for="price" class="form-label">price</label>
+                <input name="listing[price]" type="number" class="form-control" required value="<%= listing.price%>"  >  
+<!-- placeholder="<%= listing.price.toLocaleString("en-IN")%>" -->
+                <div class="valid-feedback">price Looks good!</div>
+                <div class="invalid-feedback">Please choose a price.</div>
+            </div>
+            <div class="mb-3 col-md-8">
+                <label for="country" class="form-label">country</label>
+                <input name="listing[country]" type="text" class="form-control" required value="<%=listing.country%> " >  
+                <div class="valid-feedback"> country Looks good!</div>
+                <div class="invalid-feedback">Please choose a country.</div>
+            </div>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">location</label>
+                <input name="listing[location]" type="text" class="form-control" required value="<%=listing.location%> " >  
+                <div class="valid-feedback"> location Looks good!</div>
+                <div class="invalid-feedback">Please choose a location.</div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-dark  edit-Btn mt-3">edit </button>  
+            </div>
+        </form>
+    </div>  
+</div>
+<!-- <script src="/js/script.js"></script> -->
+<!-- </body>  -->
+ 

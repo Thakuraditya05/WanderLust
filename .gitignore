@@ -1,0 +1,8 @@
+# ye file push nahi hongi git ke upper 
+.env
+.vscode/
+area.cpp
+classroom/
+node_modules/
+notes/
+#  **/.ds_store ----> kahi kisi folder ke under dikh jaye ds_storeusko waha se hata dena 

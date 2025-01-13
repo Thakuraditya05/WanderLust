@@ -1,0 +1,32 @@
+<% if(success && success.length) {%>
+    <div class="alert alert-success mt-4 alert-dismissible fade show col-6 offset-3" role="alert">
+     <%=success%>
+     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <!--for cross button-->
+     </div>
+
+<%}%>
+
+<!-- do remember ki success ek array hai to agar success msg nahi bhi hua to wo ek empty array mana jata hai yani arry exsits  but having legth =0 yani  if(success) ki value hamesha true aayegi  -->
+<!-- if(success) to agar hame acchive krna hai ki keval success msg pe hi alert message print ho   -->
+  
+
+<!-- ab slete waagira ka bhi le aao  -->
+
+<!-- this is error partial  -->
+<% if(error && error.length) {%>
+    <div class="alert alert-danger mt-4 alert-dismissible fade show col-6 offset-3" role="alert">
+     <%=error%>
+     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> <!--for cross button-->
+     </div>
+
+<%}%>
+
+
+
+
+
+
+
+
+
+
