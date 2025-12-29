@@ -56,6 +56,8 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname,"/public")));
 
 
+// This tells the app: Use Render's port if available, otherwise use 8080
+const port = process.env.PORT || 8080; 
 
 
 const mongoose = require('mongoose');
@@ -193,13 +195,13 @@ app.use((req, res, next) => {
 
 
 //app.use for listings mapping routes
+app.use("/",userRouter);
 app.use("/listings",listings);//listings--->listingsRouter
 app.use("/listings/:id/reviews",reviews);//reviews--->
 // ek naya router
-app.use("/",userRouter);
 
 
-
+// 
 
 
 // //index route 
@@ -363,6 +365,7 @@ app.use("/",userRouter);
 //to usme ye wala method jarur chalega  
 
 app.all("*",(req,res,next)=>{
+    res.redirect(`/listings`);
     next(new ExpressError(404,"<h1>Page Note Found!</h1>"));
 });
 
@@ -376,12 +379,10 @@ app.use((err,req,res,next)=>{
 });
 
 //listing to the port 
-app.listen(8080,()=>{
-    console.log("server start listening on the port 8080");
+
+app.listen(port, () => {
+    console.log(`server start listening on the port ${port}`);
 });
-
-
- 
 // app.use((err, req, res, next) => {
 //     let { statusCode = 500, message = "Something went wrong!" } = err;
     
