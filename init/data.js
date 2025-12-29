@@ -374,6 +374,8 @@
 
 
 // cloudnaery ke baad ka data 
+
+
 const sampleListings = [
   {
     title: "Cozy Beachfront Cottage",

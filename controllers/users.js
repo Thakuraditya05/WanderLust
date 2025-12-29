@@ -4,6 +4,7 @@ module.exports.renderSignupForm=(req,res)=>{
     // res.send("forms");
     res.render("users/signup.ejs");
 }
+
 module.exports.signup=async (req,res)=>{
     try{
         // res.send("forms");

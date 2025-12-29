@@ -4,13 +4,13 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');//multer-stor
 
 
 // backened ko jod rahe hai cloudnery data base se 
+// cloudConfig.js
+
 cloudinary.config({
-    cloud_name:process.env.CLOUD_NAME,
-    api_key:process.env.CLOUD_API_key,
-    api_secret:process.env.CLOUD_API_SECRET,
-
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY, // Changed 'key' to 'KEY'
+    api_secret: process.env.CLOUD_API_SECRET,
 });
-
 
 
 // cludner se judne ke baad ek folder banana hai "storage" naam ka 

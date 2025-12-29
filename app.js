@@ -70,14 +70,17 @@ main()
     .then(()=>{console.log("connection with mongoose successfull")})
     .catch((e)=>{console.log(e)});
 async function main(){
-    // await mongoose.connect(MONGO_URL);//dbUrl
+    // await mongoose.connect(MONGO_URL);
     await mongoose.connect(dbUrl);//
 
 }
 
+//cookie  ka kaam session ko track krna 
+
 // at the time of depoyement 
 const store=MongoStore.create({ 
-    mongoUrl:dbUrl,
+    mongoUrl:dbUrl,  //MONGO_URL
+    // mongoUrl:MONGO_URL,  //MONGO_URL
     crypto:{
         secret: process.env.SECRET,
     },
@@ -85,9 +88,8 @@ const store=MongoStore.create({
 });
 
 store.on("error",()=>{
-     console.log("error in mongo sesssion store ",err );
+    console.log("error in mongo sesssion store ",err );
 })
-
 
 //  ...................................session  option 
 const sessionOptions={
@@ -95,7 +97,7 @@ const sessionOptions={
     secret:process.env.SECRET,
     saveUninitialized:true,
     resave:false,
-    Cookie:{
+    cookie:{
         expires:Date.now()+7*24*60*60*100,
         maxAge:7*24*60*60*100,
         httpOnly:true,
@@ -103,8 +105,20 @@ const sessionOptions={
 };
 
 
+
+
+
+
+
+
 app.use(session(sessionOptions));
-//cookie  ka kaam session ko track krna 
+
+
+
+
+
+
+
 // .....................MW for flash
 app.use(flash());
 
@@ -356,6 +370,7 @@ app.all("*",(req,res,next)=>{
 app.use((err,req,res,next)=>{
     //deconstructing express error 
     let {statusCode=500,message="sorry error caused"}=err;
+    if (!res.locals.currUser) res.locals.currUser = null; 
         res.status(statusCode).render("error.ejs",{err});
     // res.status(statusCode).send(`<h2 style="text-align: center; margin:20rem auto; font-weight:900;">${message}</h2>`);
 });
@@ -366,8 +381,15 @@ app.listen(8080,()=>{
 });
 
 
-
-
-
-
  
+// app.use((err, req, res, next) => {
+//     let { statusCode = 500, message = "Something went wrong!" } = err;
+    
+//     // --- ADD THIS LINE ---
+//     // If an error happens before we define currUser, set it to null 
+//     // so the navbar doesn't crash the error page.
+//     
+//     // ---------------------
+
+//     res.status(statusCode).render("error.ejs", { err });
+// });

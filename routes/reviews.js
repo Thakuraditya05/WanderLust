@@ -1,12 +1,11 @@
 const express = require("express");
-
 const router = express.Router({mergeParams:true});
-const Review=require("../models/review.js");//to require review model taki rating wagaira le sake 
-
-const Listing=require("../models/listing.js");//
 const wrapAsync=require("../utils/wrapAsync.js");//
 const ExpressError=require("../utils/ExpressError.js");//
 const {ListingSchema, reviewSchema}=require("../schema.js"); // 2nd step for serverside validation //
+const Review=require("../models/review.js");//to require review model taki rating wagaira le sake 
+const Listing=require("../models/listing.js");//
+
 const { create } = require("../models/review.js");
 
 const {validateReview, isLoggedIn,isReviewAuthor} = require("../middleware.js");
@@ -46,4 +45,5 @@ router.delete("/:reviewId",
 module.exports=router;
 
 
+// 
 // 

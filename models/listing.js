@@ -25,8 +25,8 @@ const ListingSchema = new Schema ({
         // default: defaultImageURL,
         // set: (v) => (v === "" ? defaultImageURL : v),
         // after clouninary 
-        url:String,
-        filename:String,
+       url:String,
+        filename:String, 
 
     },
     price: Number,

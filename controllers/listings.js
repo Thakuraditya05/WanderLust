@@ -46,6 +46,8 @@ module.exports.showListings=async (req, res) => {
     // console.log(listing);//----password nahi hai isske under
     res.render("listings/show.ejs", { listing });
 }
+
+
 module.exports.createListing=async (req, res, next) => {
  
     // step1 for geocoding 
@@ -61,8 +63,8 @@ module.exports.createListing=async (req, res, next) => {
 
     // let {title,description,image,price,country,location}=req.body;
     let listing = new Listing(req.body.listing);
-    // console.log(req.user._id);
-    listing.owner=req.user._id;
+    // console.log(req.user);
+    listing.owner=req.user._id; 
 
     listing.image={url,filename};
 
