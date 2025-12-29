@@ -196,6 +196,12 @@ app.use((req, res, next) => {
 
 //app.use for listings mapping routes
 app.use("/",userRouter);
+
+
+
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 app.use("/listings",listings);//listings--->listingsRouter
 app.use("/listings/:id/reviews",reviews);//reviews--->
 // ek naya router
