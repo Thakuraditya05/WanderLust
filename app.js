@@ -365,7 +365,6 @@ app.use("/listings/:id/reviews",reviews);//reviews--->
 //to usme ye wala method jarur chalega  
 
 app.all("*",(req,res,next)=>{
-    res.redirect(`/listings`);
     next(new ExpressError(404,"<h1>Page Note Found!</h1>"));
 });
 
